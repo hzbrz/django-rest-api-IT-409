@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <style>
+        .container { margin-bottom: 20px; }
+        .container>small { margin-left: 110px; }
+        .container>h2 { font-size: 30px; margin-left: 100px; margin-bottom: 2px; text-decoration: underline; }
+        .inside {
+            margin-left: 170px;
+        }
+        .name { font-size: 22px; }
+        .desc, .method { margin-left: 20px; font-size: 17px }
+        .info { margin: -10px 0px 0px 50px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Customers</h2>
+        <small>*created using generic ListCreateAPIView so get/post in same view</small>
+        <div class="inside">
+            <p class="name">Get Customer(s):</p>
+            <p class="desc">Gets a JSON list of all customers</p>
+            <p class="method">GET/POST: <a href="{%url 'list_customer_REST' %}">localhost:8000/listCustomerREST/</a></p>
+        </div>
+        <div class="inside">
+            <p class="name">Add Customer:</p>
+            <p class="desc">Creates a customer by taking in a json object</p>
+            <p class="method">GET/POST: <a href="{%url 'list_customer_REST' %}">localhost:8000/listCustomerREST/</a></p>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Addresses</h2>
+        <div class="inside">
+            <p class="name">Get Addresses:</p>
+            <p class="desc">Gets a JSON list of all addresses related to a customer id</p>
+            <p class="method">GET: <a href="{%url 'get_addresses_REST' 1%}">localhost:8000/getAddressREST/customer_id/</a></p>
+            <p class="info">- by default customer_id is set to 1. Create customers and change it to test/get other customers' addresses</p>
+        </div>
+        <div class="inside">
+            <p class="name">Add Address:</p>
+            <p class="desc">Creates an address by taking in a json object</p>
+            <p class="method">POST: <a href="{%url 'add_address_REST' %}">localhost:8000/addAddressREST/</a></p>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Orders</h2>
+        <div class="inside">
+            <p class="name">Get Orders:</p>
+            <p class="desc">Gets a JSON list of all orders related to a customer id</p>
+            <p class="method">GET: <a href="{%url 'get_orders_REST' 1%}">localhost:8000/getOrderREST/customer_id/</a></p>
+            <p class="info">- by default customer_id is set to 1. Create customers and change it to test/get other customers' orders</p>
+        </div>
+        <div class="inside">
+            <p class="name">Add Order:</p>
+            <p class="desc">Creates an order by taking in a json object. Some fields (order_date, order_total, expiration_date)<br>
+                 are hidden because they either default to a value or change based on other calculations.</p>
+            <p class="method">POST: <a href="{%url 'add_order_REST' %}">localhost:8000/addOrderREST/</a></p>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 80px;">
+        <h2>Order Items</h2>
+        <div class="inside">
+            <p class="name">Get Products:</p>
+            <p class="desc">Gets a JSON list of all products (order items) related to an order id</p>
+            <p class="method">GET: <a href="{%url 'get_products_REST' 1%}">localhost:8000/getProductREST/order_id/</a></p>
+            <p class="info">- by default order_id is set to 1. Create orders and change it to test/get other order's items</p>
+        </div>
+        <div class="inside">
+            <p class="name">Add Product:</p>
+            <p class="desc">Creates a product by taking in a json object. The quantity determines the order total for the associated order.</p>
+            <p class="method">POST: <a href="{%url 'add_product_REST' %}">localhost:8000/addProductREST/</a></p>
+        </div>
+    </div>
+</body>
+</html>
